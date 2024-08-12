@@ -282,15 +282,15 @@ For more information, please refer to <https://unlicense.org>
 
             if (ansiCode < 30) newState.st = ansiCode;
             if (ansiCode >= 30 && ansiCode < 40) newState.fg = ansiCode;
-            if (ansiCode >= 40) newState.bg = ansiCode;
+            if (ansiCode >= 40) newState.back = ansiCode;
 
             states.push(newState)
-            text += `\x1b[${newState.st};${(ansiCode >= 40) ? newState.bg : newState.fg}m`;
+            text += `\x1b[${newState.st};${(ansiCode >= 40) ? newState.back : newState.fg}m`;
             text += nodesToANSI(node.childNodes, states);
             states.pop()
             text += `\x1b[0m`;
             if (states.at(-1).fg !== 2) text += `\x1b[${states.at(-1).st};${states.at(-1).fg}m`;
-            if (states.at(-1).bg !== 2) text += `\x1b[${states.at(-1).st};${states.at(-1).bg}m`;
+            if (states.at(-1).back !== 2) text += `\x1b[${states.at(-1).st};${states.at(-1).back}m`;
         }
         return text;
     }
@@ -299,7 +299,7 @@ For more information, please refer to <https://unlicense.org>
     let copyTimeout = null;
 
     copybtn.onclick = () => {
-        const toCopy = "```ansi\n" + nodesToANSI(textarea.childNodes, [{ fg: 2, bg: 2, st:2 }]) + "\n```";
+        const toCopy = "```ansi\n" + nodesToANSI(textarea.childNodes, [{ fg: 2, back: 2, st:2 }]) + "\n```";
         navigator.clipboard.writeText(toCopy).then(() => {
             if (copyTimeout) clearTimeout(copyTimeout);
 
@@ -310,7 +310,7 @@ For more information, please refer to <https://unlicense.org>
             copyTimeout = setTimeout(() => {
                 copyCount = 0;
                 copybtn.style.backgroundColor = null;
-                copybtn.innerText = "Copy";
+                copybtn.innerText = "Copy text as Discord formatted";
             }, 2000)
 
         
