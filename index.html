@@ -303,8 +303,7 @@ For more information, please refer to <https://unlicense.org>
         navigator.clipboard.writeText(toCopy).then(() => {
             if (copyTimeout) clearTimeout(copyTimeout);
 
-            const funnyCopyMessages = copybtn.innerText = ["Copied!", "Double Copy!", "Triple Copy!", "Dominating!!", "Rampage!!", "Mega Copy!!", "Unstoppable!!", "Wicked Sick!!", "Monster Copy!!!", "GODLIKE!!!", "BEYOND GODLIKE!!!!", Array(16).fill(0).reduce(p => p + String.fromCharCode(Math.floor(Math.random() * 65535)),"")];
-
+            const funnyCopyMessages = copybtn.innerText = ["Copied!", "Double Copy!", "Triple Copy!", "Dominating!!", "Rampage!!", "Mega Copy!!", "Unstoppable!!", "Wicked Sick!!", "Monster Copy!!!", "GODLIKE!!!", "BEYOND GODLIKE!!!!",
             copybtn.style.backgroundColor = (copyCount <= 8) ? "#3BA55D" : "#ED4245";
             copybtn.innerText = funnyCopyMessages[copyCount];
             copyCount = Math.min(11, copyCount + 1);
