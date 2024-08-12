@@ -132,14 +132,14 @@ For more information, please refer to <https://unlicense.org>
 .ansi-36 { color: #2aa198; }
 .ansi-37 { color: #ffffff; }
 
-.ansi-30-back { background-color: #4f545c; }
-.ansi-31-back { background-color: #dc322f; }
-.ansi-32-back { background-color: #859900; }
-.ansi-33-back { background-color: #b58900; }
-.ansi-34-back { background-color: #268bd2; }
-.ansi-35-back { background-color: #d33682; }
-.ansi-36-back { background-color: #2aa198; }
-.ansi-37-back { background-color: #ffffff; }
+.ansi-30-bg { background-color: #4f545c; }
+.ansi-31-bg { background-color: #dc322f; }
+.ansi-32-bg { background-color: #859900; }
+.ansi-33-bg { background-color: #b58900; }
+.ansi-34-bg { background-color: #268bd2; }
+.ansi-35-bg { background-color: #d33682; }
+.ansi-36-bg { background-color: #2aa198; }
+.ansi-37-bg { background-color: #ffffff; }
 
 .ansi-40 { background-color: #002b36; }
 .ansi-41 { background-color: #cb4b16; }
@@ -165,14 +165,14 @@ For more information, please refer to <https://unlicense.org>
 <button data-ansi="4" class="button style-button ansi-4">Line</button>
 <br><br>
 <strong>FG</strong>
-<button data-ansi="30" class="button style-button ansi-30-back">&nbsp;</button>
-<button data-ansi="31" class="button style-button ansi-31-back">&nbsp;</button>
-<button data-ansi="32" class="button style-button ansi-32-back">&nbsp;</button>
-<button data-ansi="33" class="button style-button ansi-33-back">&nbsp;</button>
-<button data-ansi="34" class="button style-button ansi-34-back">&nbsp;</button>
-<button data-ansi="35" class="button style-button ansi-35-back">&nbsp;</button>
-<button data-ansi="36" class="button style-button ansi-36-back">&nbsp;</button>
-<button data-ansi="37" class="button style-button ansi-37-back">&nbsp;</button>
+<button data-ansi="30" class="button style-button ansi-30-bg">&nbsp;</button>
+<button data-ansi="31" class="button style-button ansi-31-bg">&nbsp;</button>
+<button data-ansi="32" class="button style-button ansi-32-bg">&nbsp;</button>
+<button data-ansi="33" class="button style-button ansi-33-bg">&nbsp;</button>
+<button data-ansi="34" class="button style-button ansi-34-bg">&nbsp;</button>
+<button data-ansi="35" class="button style-button ansi-35-bg">&nbsp;</button>
+<button data-ansi="36" class="button style-button ansi-36-bg">&nbsp;</button>
+<button data-ansi="37" class="button style-button ansi-37-bg">&nbsp;</button>
 <br><br>
 <strong>BACK</strong>
 <button data-ansi="40" class="button style-button ansi-40">&nbsp;</button>
@@ -282,10 +282,10 @@ For more information, please refer to <https://unlicense.org>
 
             if (ansiCode < 30) newState.st = ansiCode;
             if (ansiCode >= 30 && ansiCode < 40) newState.fg = ansiCode;
-            if (ansiCode >= 40) newState.back = ansiCode;
+            if (ansiCode >= 40) newState.bg = ansiCode;
 
             states.push(newState)
-            text += `\x1b[${newState.st};${(ansiCode >= 40) ? newState.back : newState.fg}m`;
+            text += `\x1b[${newState.st};${(ansiCode >= 40) ? newState.bg : newState.fg}m`;
             text += nodesToANSI(node.childNodes, states);
             states.pop()
             text += `\x1b[0m`;
