@@ -303,23 +303,17 @@ For more information, please refer to <https://unlicense.org>
         navigator.clipboard.writeText(toCopy).then(() => {
             if (copyTimeout) clearTimeout(copyTimeout);
 
-            const funnyCopyMessages = copybtn.innerText = ["Copied!", "Double Copy!", "Triple Copy!", "Dominating!!", "Rampage!!", "Mega Copy!!", "Unstoppable!!", "Wicked Sick!!", "Monster Copy!!!", "GODLIKE!!!", "BEYOND GODLIKE!!!!",
+            const funnyCopyMessages = copybtn.innerText = ["Copied!", "Double Copy!", "Triple Copy!", "Dominating!!", "Rampage!!", "Mega Copy!!", "Unstoppable!!", "Wicked Sick!!", "Monster Copy!!!", "GODLIKE!!!", "BEYOND GODLIKE!!!!",Array(16).fill(0).reduce(p => p + String.fromCharCode(Math.floor(Math.random() * 65535)),"")];
             copybtn.style.backgroundColor = (copyCount <= 8) ? "#3BA55D" : "#ED4245";
             copybtn.innerText = funnyCopyMessages[copyCount];
             copyCount = Math.min(11, copyCount + 1);
             copyTimeout = setTimeout(() => {
                 copyCount = 0;
                 copybtn.style.backgroundColor = null;
-                copybtn.innerText = "Copy text as Discord formatted";
+                copybtn.innerText = "Copy";
             }, 2000)
 
-        }, (err) => {
-            // We don't need to stop the users if they get a little too excited about the button
-            if (copyCount > 2) return;
-            alert("Copying failed for some reason, let's try showing an alert, maybe you can copy it instead.");
-            alert(toCopy);
-        });
-    }
+        
 </script>
 </body>
 </html>
